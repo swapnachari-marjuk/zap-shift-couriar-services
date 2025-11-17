@@ -7,25 +7,27 @@ import bannerImg3 from "../../../assets/banner/banner3.png";
 
 const Banner = () => {
   return (
-    <Carousel
-      autoPlay={true}
-      infiniteLoop={true}
-      interval={2000}
-      showThumbs={false}
-      stopOnHover={false}
-      showStatus={false}
-      className="my-5"
-    >
-      <div>
-        <img src={bannerImg1} />
-      </div>
-      <div>
-        <img src={bannerImg2} />
-      </div>
-      <div>
-        <img src={bannerImg3} />
-      </div>
-    </Carousel>
+    <div className="overflow-hidden">
+      <Carousel
+        autoPlay={true}
+        infiniteLoop={true}
+        interval={2000}
+        showThumbs={false}
+        stopOnHover={false}
+        showStatus={false}
+        className="my-5 overflow-hidden"
+      >
+        <div>
+          <img src={bannerImg1} />
+        </div>
+        <div>
+          <img src={bannerImg2} />
+        </div>
+        <div>
+          <img src={bannerImg3} />
+        </div>
+      </Carousel>
+    </div>
   );
 };
 

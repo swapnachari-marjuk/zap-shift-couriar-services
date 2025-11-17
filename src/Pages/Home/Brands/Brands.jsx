@@ -8,11 +8,11 @@ import startPeopleImg from "../../../assets/brands/start_people.png";
 
 const Brands = () => {
   return (
-    <div className="my-20">
+    <div className="my-20 overflow-hidden">
       <h3 className="text-center font-bold text-2xl pb-4">
         We've helped thousands of sales teams
       </h3>
-      <Marquee>
+      <Marquee className="overflow-hidden">
         <img className="mx-8" src={amzImg} alt="" />
         <img className="mx-8" src={casioImg} alt="" />
         <img className="mx-8" src={moonStarImg} alt="" />

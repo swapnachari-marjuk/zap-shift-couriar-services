@@ -29,9 +29,9 @@ const Works = () => {
     },
   ];
   return (
-    <div className="lg:px-20 md:px-10 py-5">
+    <div className="lg:px-20 md:px-10 py-5 md:block flex flex-col justify-center items-center">
       <h3 className="text-2xl font-bold mb-3">How it Works</h3>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 ">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 md:w-full w-[70%] gap-5 ">
         {data.map((i) => (
           <div key={i.id} className="bg-white p-4 rounded-2xl">
             <div>

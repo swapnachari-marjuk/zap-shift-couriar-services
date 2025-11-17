@@ -6,7 +6,7 @@ const ReviewCard = ({ review }) => {
   console.log(review);
   return (
     <div>
-      <div className="max-w-sm mx-auto p-6 rounded-xl bg-[#ddedae] relative overflow-hidden">
+      <div className="max-w-sm  mx-auto p-6 rounded-xl bg-[#ddedae] relative overflow-hidden">
         {/* Content */}
         <div className="relative z-10">
           {/* Quote icon */}
@@ -19,7 +19,7 @@ const ReviewCard = ({ review }) => {
 
           {/* Author section */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full">
+            <div className="w-10 h-10 rounded-full hidden md:block">
               <img src={user_photoURL} alt="" />
             </div>
 

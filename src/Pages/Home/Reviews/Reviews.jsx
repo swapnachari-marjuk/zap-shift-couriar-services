@@ -9,8 +9,8 @@ const Reviews = ({ reviewsPromise }) => {
   const reviews = use(reviewsPromise);
   console.log(reviews);
   return (
-    <div className="my-5">
-      <div className="w-3xl mx-auto text-center">
+    <div className="my-5 overflow-hidden">
+      <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-2xl text-center font-bold">
           What our customers are sayings
         </h2>
@@ -25,7 +25,7 @@ const Reviews = ({ reviewsPromise }) => {
         loop={true}
         effect={"coverflow"}
         centeredSlides={true}
-        slidesPerView={3}
+        slidesPerView={2}
         coverflowEffect={{
           rotate: 30,
           stretch: "50%",
@@ -34,13 +34,16 @@ const Reviews = ({ reviewsPromise }) => {
           slideShadows: true,
           scale: 0.75,
         }}
+        breakpoints={{
+          640: { slidesPerView: 3 },
+        }}
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
         }}
         pagination={true}
         modules={[EffectCoverflow, Autoplay]}
-        className="mySwiper"
+        className="mySwiper overflow-hidden"
       >
         {reviews.map((review) => (
           <SwiperSlide key={review.id}>

@@ -1,11 +1,14 @@
 import React from "react";
 import Logo from "../../components/Logo";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
     <footer className="footer footer-horizontal footer-center bg-secondary text-gray-100 p-10">
       <aside>
-        <Logo />
+        <Link>
+          <Logo />
+        </Link>
         <p className="font-light">
           Enjoy fast, reliable parcel delivery with real-time tracking and zero
           hassle. From personal packages to <br /> business shipments — we
