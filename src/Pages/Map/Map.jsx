@@ -1,25 +1,44 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useLoaderData } from "react-router";
 
 const Map = () => {
   const serviceCentre = useLoaderData();
-  console.log(serviceCentre);
   const position = [23.685, 90.3563];
+  const mapRef = useRef();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const location = e.target.location.value.trim();
+    console.log(location);
+
+    const district = serviceCentre.find((center) =>
+      center.district.toLowerCase().includes(location.toLowerCase())
+    );
+
+    if (district) {
+      const coOrdinat = [district.latitude, district.longitude];
+      console.log(district, coOrdinat);
+      mapRef.current.flyTo(coOrdinat, 14);
+    }
+  };
   return (
     <div className="bg-white rounded-2xl py-8 px-10 m-5">
       <div className="border-b-2 border-gray-300">
         <h2 className="text-4xl font-bold">We are available in 64 districts</h2>
-        <div className="join my-8">
+        <form onSubmit={handleSearch} className="join my-8">
           <input
             className="input join-item rounded-l-full"
+            name="location"
             placeholder="Location"
+            required
           />
           <button className="btn join-item rounded-r-full btn-primary">
             Search
           </button>
-        </div>
+        </form>
       </div>
 
       <h4 className="text-xl font-bold my-8">
@@ -29,6 +48,7 @@ const Map = () => {
       <div className="w-full h-[80vh] border-2">
         <MapContainer
           center={position}
+          ref={mapRef}
           zoom={8}
           scrollWheelZoom={false}
           className="h-full"
