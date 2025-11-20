@@ -7,7 +7,6 @@ import ReviewCard from "./ReviewCard";
 
 const Reviews = ({ reviewsPromise }) => {
   const reviews = use(reviewsPromise);
-  console.log(reviews);
   return (
     <div className="my-5 overflow-hidden">
       <div className="max-w-3xl mx-auto text-center">

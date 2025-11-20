@@ -3,7 +3,6 @@ import React from "react";
 
 const ReviewCard = ({ review }) => {
   const { userName, review: userReview, user_photoURL, user_email } = review;
-  console.log(review);
   return (
     <div>
       <div className="max-w-sm  mx-auto p-6 rounded-xl bg-[#ddedae] relative overflow-hidden">

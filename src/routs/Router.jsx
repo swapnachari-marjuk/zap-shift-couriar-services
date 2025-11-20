@@ -5,6 +5,8 @@ import Map from "../Pages/Map/Map";
 import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import Register from "../Pages/Auth/Register/Register";
 import Login from "../Pages/Auth/Login/Login";
+import PrivetRouter from "./PrivetRouter";
+import Rider from "../Pages/Rider/Rider";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
         path: "/coverage",
         Component: Map,
         loader: () => fetch("/serviceCenters.json"),
+      },
+      {
+        path: "/rider",
+        element: (
+          <PrivetRouter>
+            <Rider />
+          </PrivetRouter>
+        ),
       },
     ],
   },
