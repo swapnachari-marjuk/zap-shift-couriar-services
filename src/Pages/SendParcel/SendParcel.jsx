@@ -47,6 +47,8 @@ const SendParcel = () => {
       }
     }
 
+    data.courierCost = cost;
+
     Swal.fire({
       title: `You will be charged ${cost} taka.`,
       text: "Are you wanted to send parcel with this cost?",
@@ -120,8 +122,10 @@ const SendParcel = () => {
           <div className="flex-1">
             <label>Parcel Weight (KG)</label>
             <input
+              type="number"
               {...register("parcelWeight")}
               className="w-full border p-2 rounded"
+              defaultValue={0}
             />
           </div>
         </div>
