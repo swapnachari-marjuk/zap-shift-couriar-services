@@ -1,11 +1,12 @@
 import React from "react";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const SuccessPayment = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <p>your payment is succeed.</p>
-      <button onClick={() => <Navigate to="/" />}>go to home</button>
+      <button onClick={() => navigate("/")}>go to home</button>
     </div>
   );
 };

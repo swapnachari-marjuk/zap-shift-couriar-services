@@ -46,6 +46,8 @@ const MyParcels = () => {
 
     console.log(id);
   };
+
+
   return (
     <div>
       here is my parcels data {parcels.length}
@@ -73,6 +75,7 @@ const MyParcels = () => {
                   {parcel?.paymentStatus === "Paid" ? (
                     <span className="text-lime-600 bg-lime-300">Paid</span>
                   ) : (
+
                     <Link
                       to={`/dashboard/payment/${parcel._id}`}
                       className="btn btn-xs"
