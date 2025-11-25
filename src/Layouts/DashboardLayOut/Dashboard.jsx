@@ -1,4 +1,4 @@
-import { Truck } from "lucide-react";
+import { CreditCard, Truck } from "lucide-react";
 import React from "react";
 import { Link, Outlet } from "react-router";
 
@@ -85,6 +85,17 @@ const Dashboard = () => {
                 >
                   <Truck strokeWidth={1.25} />
                   <span className="is-drawer-close:hidden"> My Parcels</span>
+                </Link>
+              </li>
+
+              <li className="">
+                <Link
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My Payment"
+                  to={"/dashboard/myPayment"}
+                >
+                  <CreditCard strokeWidth={1.25} />
+                  <span className="is-drawer-close:hidden">My Payment</span>
                 </Link>
               </li>
 
