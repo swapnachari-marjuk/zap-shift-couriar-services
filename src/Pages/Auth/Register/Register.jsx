@@ -41,7 +41,8 @@ const Register = () => {
             photoURL: photoURL,
           };
 
-          axios.post("http://localhost:3000/users", userInfo).then((res) => {
+          axios.post("http://localhost:3000/users", userInfo)
+          .then((res) => {
             if (res.data.insertedId) {
               console.log("User info saved in DB successfully.");
             }
@@ -57,7 +58,7 @@ const Register = () => {
             .then(() => console.log("user profile updated"))
             .catch((error) => console.log(error));
         });
-        navigate('/')
+        navigate("/");
         console.log("after create a user successfully", result);
       })
       .catch((err) => console.log(err));

@@ -1,16 +1,27 @@
 import React from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
+import axios from "axios";
 
 const GoogleLogin = () => {
   const { googleSignIn } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
-        navigate(location?.state || "/");
+        const userInfo = {
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+        };
+
+        axios.post("http://localhost:3000/users", userInfo).then((res) => {
+          navigate(location?.state || "/");
+          if (res.data.insertedId) {
+            console.log("User info saved in DB successfully.");
+          }
+        });
       })
       .catch((err) => console.log(err));
   };
