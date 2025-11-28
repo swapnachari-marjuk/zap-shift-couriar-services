@@ -14,6 +14,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import CancelPayment from "../Pages/Dashboard/CancelPayment/CancelPayment";
 import SuccessPayment from "../Pages/Dashboard/SuccessPayment/SuccessPayment";
 import MyPayment from "../Pages/Dashboard/MyPayment/MyPayment";
+import PendingRider from "../Pages/Dashboard/PendingRider/PendingRider";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/paymentCancel",
         Component: CancelPayment,
+      },
+      {
+        path: "/dashboard/pendingRider",
+        Component: PendingRider,
       },
     ],
   },

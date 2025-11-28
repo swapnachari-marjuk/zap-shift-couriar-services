@@ -1,4 +1,4 @@
-import { CreditCard, Truck } from "lucide-react";
+import { Bike, CreditCard, Truck } from "lucide-react";
 import React from "react";
 import { Link, Outlet } from "react-router";
 
@@ -77,7 +77,8 @@ const Dashboard = () => {
                 </Link>
               </li>
 
-              <li className="">
+              {/* my parcels */}
+              <li>
                 <Link
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="myParcels"
@@ -88,7 +89,8 @@ const Dashboard = () => {
                 </Link>
               </li>
 
-              <li className="">
+              {/* my payment */}
+              <li>
                 <Link
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="My Payment"
@@ -96,6 +98,18 @@ const Dashboard = () => {
                 >
                   <CreditCard strokeWidth={1.25} />
                   <span className="is-drawer-close:hidden">My Payment</span>
+                </Link>
+              </li>
+
+              {/* pending rider */}
+              <li>
+                <Link
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Pending Rider"
+                  to={"/dashboard/pendingRider"}
+                >
+                  <Bike strokeWidth={1.25} />
+                  <span className="is-drawer-close:hidden">Pending Rider</span>
                 </Link>
               </li>
 
