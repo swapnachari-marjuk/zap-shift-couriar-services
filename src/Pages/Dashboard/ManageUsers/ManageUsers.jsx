@@ -46,11 +46,35 @@ const ManageUsers = () => {
   };
 
   const handleApprove = (user) => {
-    handleUser(user, "approved");
+    Swal.fire({
+      title: "Confirm it!",
+      text: `You want to approve ${user.displayName} as an admin.`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Approve",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleUser(user, "approved");
+      }
+    });
   };
 
   const handleReject = (user) => {
-    handleUser(user, "removed");
+    Swal.fire({
+      title: "Confirm it!",
+      text: `You want to remove ${user.displayName} from admin panel.`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Remove",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleUser(user, "removed");
+      }
+    });
   };
 
   return (

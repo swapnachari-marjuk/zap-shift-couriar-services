@@ -5,8 +5,11 @@ import { FaUserClock } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import React from "react";
 import { Link, Outlet } from "react-router";
+import useRole from "../../hooks/useRole";
 
 const Dashboard = () => {
+  const { userRole } = useRole();
+  console.log(userRole);
   return (
     <div className="max-w-7xl mx-auto">
       <div className="drawer lg:drawer-open">
@@ -93,30 +96,36 @@ const Dashboard = () => {
                 </Link>
               </li>
 
-              {/* pending rider */}
-              <li>
-                <Link
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Pending Rider"
-                  to={"/dashboard/pendingRider"}
-                >
-                  <RiMotorbikeFill />
-                  <span className="is-drawer-close:hidden">Pending Rider</span>
-                </Link>
-              </li>
-
-              {/* pending rider */}
-              <li>
-                <Link
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Manage Users"
-                  to={"/dashboard/manageUsers"}
-                >
-                  <FaUserClock />
-                  <span className="is-drawer-close:hidden">Manage Users</span>
-                </Link>
-              </li>
-
+              {userRole?.role === "admin" && (
+                <>
+                  {/* pending rider */}
+                  <li>
+                    <Link
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      data-tip="Pending Rider"
+                      to={"/dashboard/pendingRider"}
+                    >
+                      <RiMotorbikeFill />
+                      <span className="is-drawer-close:hidden">
+                        Pending Rider
+                      </span>
+                    </Link>
+                  </li>
+                   {/* manage user */}
+                  <li>
+                    <Link
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      data-tip="Manage Users"
+                      to={"/dashboard/manageUsers"}
+                    >
+                      <FaUserClock />
+                      <span className="is-drawer-close:hidden">
+                        Manage Users
+                      </span>
+                    </Link>
+                  </li>
+                </>
+              )}
               {/* List item */}
               <li>
                 <button
