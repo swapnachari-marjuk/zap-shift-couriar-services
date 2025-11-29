@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { CircleX, SquareCheck } from "lucide-react";
+import Swal from "sweetalert2";
 
 const PendingRider = () => {
   const axiosSecure = useAxiosSecure();
@@ -12,25 +13,29 @@ const PendingRider = () => {
       return res.data;
     },
   });
-
-  const handleApproveStatus = (id, status) => {
-    const updateInfo = { status: status };
-    console.log(updateInfo);
+  const handleApproveStatus = (rider, status) => {
+    const updateInfo = { status: status, email: rider.riderEmail };
     axiosSecure
-      .patch(`/riders/${id}`, updateInfo)
-      .then((res) => {
-        console.log(res);
+      .patch(`/riders/${rider._id}`, updateInfo)
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Rider request has been ${status}.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         refetch();
       })
       .catch((err) => console.log(err));
   };
 
-  const handleApprove = (id) => {
-    handleApproveStatus(id, "approved");
+  const handleApprove = (rider) => {
+    handleApproveStatus(rider, "approved");
   };
 
-  const handleReject = (id) => {
-    handleApproveStatus(id, "rejected");
+  const handleReject = (rider) => {
+    handleApproveStatus(rider, "rejected");
   };
 
   return (
@@ -62,14 +67,14 @@ const PendingRider = () => {
                 <th>
                   <button
                     className="btn btn-sm"
-                    onClick={() => handleApprove(p._id)}
+                    onClick={() => handleApprove(p)}
                   >
                     <SquareCheck size={16} />
                   </button>
 
                   <button
                     className="btn btn-sm"
-                    onClick={() => handleReject(p._id)}
+                    onClick={() => handleReject(p)}
                   >
                     <CircleX size={16} />
                   </button>
