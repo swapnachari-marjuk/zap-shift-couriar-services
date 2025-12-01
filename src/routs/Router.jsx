@@ -17,6 +17,7 @@ import MyPayment from "../Pages/Dashboard/MyPayment/MyPayment";
 import PendingRider from "../Pages/Dashboard/PendingRider/PendingRider";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRouter from "./AdminRouter";
+import AssignRider from "../Pages/Dashboard/AssignRider/AssignRider";
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRouter>
             <ManageUsers></ManageUsers>
+          </AdminRouter>
+        ),
+      },
+      {
+        path: "/dashboard/assignRider",
+        element: (
+          <AdminRouter>
+            <AssignRider />
           </AdminRouter>
         ),
       },

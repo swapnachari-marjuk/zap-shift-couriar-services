@@ -1,6 +1,6 @@
 import { FaTruckFast } from "react-icons/fa6";
 import { BsCreditCard2BackFill } from "react-icons/bs";
-import { RiMotorbikeFill } from "react-icons/ri";
+import { RiEBike2Line, RiMotorbikeFill } from "react-icons/ri";
 import { FaUserClock } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import React from "react";
@@ -111,7 +111,19 @@ const Dashboard = () => {
                       </span>
                     </Link>
                   </li>
-                   {/* manage user */}
+                  <li>
+                    <Link
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                      data-tip="Assign Rider"
+                      to={"/dashboard/assignRider"}
+                    >
+                      <RiEBike2Line />
+                      <span className="is-drawer-close:hidden">
+                        Assign Rider
+                      </span>
+                    </Link>
+                  </li>
+                  {/* manage user */}
                   <li>
                     <Link
                       className="is-drawer-close:tooltip is-drawer-close:tooltip-right"

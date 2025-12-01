@@ -14,7 +14,7 @@ const Login = () => {
   const { signInUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  // console.log(location);
   const [showPass, setShowPass] = useState(false);
 
   const handleLogin = (data) => {
@@ -53,7 +53,7 @@ const Login = () => {
                 {...register("password", {
                   required: true,
                   pattern:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.[#?!@$%^&*-])(?=.*[0-9]).{6,}/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[#?!@$%^&*-])(?=.*[0-9]).{6,}$/,
                 })}
                 className="input"
                 placeholder="Password"
@@ -85,7 +85,9 @@ const Login = () => {
               <a className="link link-hover">Forgot password?</a>
             </div>
 
-            <button className="btn btn-primary mt-2">Login</button>
+            <button type="submit" className="btn btn-primary mt-2">
+              Login
+            </button>
           </fieldset>
         </form>
 
