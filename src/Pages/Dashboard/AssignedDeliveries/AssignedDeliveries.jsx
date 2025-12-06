@@ -12,15 +12,19 @@ const AssignedDeliveries = () => {
   const { data: parcels, refetch } = useQuery({
     queryKey: ["parcels", user.email, "Assigned_Rider"],
     queryFn: async () => {
-      const res = await axiosSecure(
+      const res = await axiosSecure.get(
         `/parcels/rider?riderEmail=${user.email}&deliveryStatus=Assigned_Rider`
       );
       return res.data;
     },
   });
 
-  const handleAccept = (parcel, status) => {
-    const updateInfo = { deliveryStatus: status };
+  const handleDeliveryStatus = (parcel, status) => {
+    const updateInfo = {
+      deliveryStatus: status,
+      riderEmail: user.email,
+      trackingID: parcel.trackingID,
+    };
 
     axiosSecure
       .patch(`/parcel/${parcel._id}/status`, updateInfo)
@@ -67,7 +71,9 @@ const AssignedDeliveries = () => {
                 <td>
                   <button
                     className="btn btn-sm"
-                    onClick={() => handleAccept(parcel, "rider_arriving")}
+                    onClick={() =>
+                      handleDeliveryStatus(parcel, "rider_arriving")
+                    }
                   >
                     <FaCheck />
                   </button>
@@ -94,14 +100,14 @@ const AssignedDeliveries = () => {
                   ) : (
                     <button
                       className="btn btn-sm btn-primary mr-4"
-                      onClick={() => handleAccept(parcel, "picked_up")}
+                      onClick={() => handleDeliveryStatus(parcel, "picked_up")}
                     >
                       Mark As Picked Up
                     </button>
                   )}
                   <button
                     className="btn btn-sm btn-primary"
-                    onClick={() => handleAccept(parcel, "delivered")}
+                    onClick={() => handleDeliveryStatus(parcel, "delivered")}
                   >
                     Mark As Delivered
                   </button>

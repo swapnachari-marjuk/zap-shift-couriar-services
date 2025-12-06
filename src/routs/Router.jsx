@@ -21,6 +21,7 @@ import AssignRider from "../Pages/Dashboard/AssignRider/AssignRider";
 import AssignedDeliveries from "../Pages/Dashboard/AssignedDeliveries/AssignedDeliveries";
 import RiderRouter from "./RiderRouter";
 import CompletedDeliveries from "../Pages/Dashboard/CompletedDeliveries/CompletedDeliveries";
+import ParcelTrack from "../Pages/ParcelTrack/ParcelTrack";
 
 const router = createBrowserRouter([
   {
@@ -54,16 +55,23 @@ const router = createBrowserRouter([
         ),
         loader: () => fetch("/serviceCenters.json"),
       },
+      {
+        path: "/trackingParcel/:trackingID/logs",
+        element: <ParcelTrack />,
+      },
     ],
   },
+
+  // dashboard
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivetRouter>
         <Dashboard></Dashboard>
       </PrivetRouter>
     ),
     children: [
+      // normal user routes
       {
         path: "myParcels",
         Component: MyParcels,
@@ -130,6 +138,8 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  // authentication pages
   {
     path: "/",
     Component: AuthLayout,

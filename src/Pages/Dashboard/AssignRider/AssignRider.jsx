@@ -40,6 +40,7 @@ const AssignRider = () => {
       riderName: rider.riderName,
       riderEmail: rider.riderEmail,
       parcelId: selectedParcel._id,
+      trackingID: selectedParcel.trackingID,
     };
     axiosSecure.patch(`/parcels`, riderAssignInfo).then((res) => {
       if (res.data.modifiedCount) {

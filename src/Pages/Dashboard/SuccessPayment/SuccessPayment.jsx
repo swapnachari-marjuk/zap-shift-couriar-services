@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const SuccessPayment = () => {
@@ -20,7 +20,7 @@ const SuccessPayment = () => {
         .patch(`/payment-success?session_id=${sessionID}`)
         .then((res) => {
           console.log(res);
-          calledRef.current= true;
+          calledRef.current = true;
           setSuccessInfo({
             trackingID: res.data.trackingID,
             transactionID: res.data.transactionID,
@@ -41,12 +41,17 @@ const SuccessPayment = () => {
         Parcel Tracking Id:{" "}
         <span className="font-semibold">{successInfo?.trackingID}</span>
       </p>
-      <button
-        className="btn btn-sm btn-primary mt-2"
-        onClick={() => navigate("/")}
-      >
-        go to home
-      </button>
+      <div className="space-x-1">
+        <button
+          className="btn btn-sm btn-primary mt-2"
+          onClick={() => navigate("/")}
+        >
+          go to home
+        </button>
+        <Link className="btn btn-sm mt-2" to={"/dashboard/myParcels"}>
+          See Parcels
+        </Link>
+      </div>
     </div>
   );
 };
